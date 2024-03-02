@@ -1,12 +1,10 @@
 import axios from "axios";
-import React, { BaseSyntheticEvent, useContext, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { BaseSyntheticEvent, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { WeatherContext } from "../../context/WeatherContext";
 
 export const NavBar = () => {
-  const navigate = useNavigate();
-
-  const { selectedAddress, setSelectedAddress } = useContext(WeatherContext);
+  const { setSelectedAddress } = useContext(WeatherContext);
   const [searchTerm, setSearchTerm] = useState("");
 
   const [foundAddresses, setFoundAddresses] = useState<any[]>([]);
@@ -40,7 +38,7 @@ export const NavBar = () => {
     <>
       <nav className="navbar bg-primary" data-bs-theme="dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="#" data-testid="Navbar.Header">
             The Weather Channel
           </a>
           <form className="d-flex" role="search">

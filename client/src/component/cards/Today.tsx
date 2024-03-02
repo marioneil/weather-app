@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { WiDayCloudy } from "react-icons/wi";
 import { WeatherContext } from "../../context/WeatherContext";
 

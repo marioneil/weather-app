@@ -1,4 +1,3 @@
-import React from "react";
 import { NavBar } from "../navbar/NavBar";
 import NavBar2 from "../navbar/NavBar2";
 import NavBar3 from "../navbar/NavBar3";
@@ -8,7 +7,7 @@ export const Layout = () => {
   return (
     <div>
       <NavBar />
-      <NavBar2 city="Ottawa" />
+      <NavBar2 />
       <NavBar3 />
       <Outlet />
     </div>
