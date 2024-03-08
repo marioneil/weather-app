@@ -47,6 +47,9 @@ cy.findByText
 // cy.findByText("Today").should("exist").click();
 cy.get("a").contains("Today").should("exist").click();
 
+hamburger menu on LHS not working in cypress.
+not able to see the dropdown
+
 auth
 oauth
 
