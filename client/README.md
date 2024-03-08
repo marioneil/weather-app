@@ -39,6 +39,14 @@ api for backend - jest
 component test ui - jest
 end to end test. - cypress.
 
+March 7
+Cypress - variable scope.
+// let searchedCity;
+
+cy.findByText
+// cy.findByText("Today").should("exist").click();
+cy.get("a").contains("Today").should("exist").click();
+
 auth
 oauth
 
