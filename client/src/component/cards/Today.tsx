@@ -7,7 +7,7 @@ export const Today = () => {
 
   return (
     <>
-      <div className="p-3 bg-primary-subtle">
+      <div data-testid="today-card" className="p-3 bg-primary-subtle">
         <div className="card">
           <div className="card-header  bg-primary text-white">
             <p className="m-0">

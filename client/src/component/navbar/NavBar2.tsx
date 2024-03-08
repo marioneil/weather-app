@@ -11,7 +11,7 @@ const NavBar2: React.FC = () => {
         <div className="flex-shrink-0">
           <TiWeatherCloudy />
         </div>
-        <div className="ms-3">
+        <div className="ms-3" data-testid="navbar2">
           {currentWeather?.current.temp_c}&deg; C{", "}
           {`${selectedAddress.name},  ${selectedAddress.region}, ${selectedAddress.country} `}
         </div>
