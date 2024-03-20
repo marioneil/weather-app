@@ -17,6 +17,7 @@
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
     "@popperjs/core": "^2.11.8",
+    "@testing-library/cypress": "^10.0.1",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",

@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "types": ["cypress", "./cypress/support/index.d.ts"],
+    "types": [
+      "cypress",
+      "./cypress/support/index.d.ts",
+      "@testing-library/cypress"
+    ],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -21,6 +25,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "cypress"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

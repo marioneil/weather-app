@@ -53,4 +53,7 @@ not able to see the dropdown
 auth
 oauth
 
-intercept to add token.
+click on today link and check text on the page.
+intercept api call
+
+hourly section
