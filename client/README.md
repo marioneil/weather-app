@@ -53,7 +53,14 @@ not able to see the dropdown
 auth
 oauth
 
-click on today link and check text on the page.
-intercept api call
+DONE-> click on today link and check text on the page.
+CYPRESS-> intercept api call
 
-hourly section
+DONE hourly section
+
+mAR 30
+Acordion header has time hour - temperateure
+Add dates section in hourly card
+
+get hourly forecast from server.
+implement axios call on server.

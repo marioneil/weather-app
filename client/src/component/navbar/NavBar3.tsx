@@ -14,9 +14,9 @@ const NavBar3 = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <Link className="nav-link" to="/hourly">
             Hourly
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">
