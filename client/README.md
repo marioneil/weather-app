@@ -59,8 +59,13 @@ CYPRESS-> intercept api call
 DONE hourly section
 
 mAR 30
-Acordion header has time hour - temperateure
-Add dates section in hourly card
+DONE Acordion header has time hour - temperateure
+DONE Add dates section in hourly card
 
-get hourly forecast from server.
+DONE get hourly forecast from server.
 implement axios call on server.
+
+DYNAMIC hourly screen
+
+unit test for hourly component
+cypress test for hourly component.

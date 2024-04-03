@@ -1,6 +1,6 @@
 import React from "react";
 import { BsThermometer } from "react-icons/bs";
-export const Details = () => {
+export const AccordionDetails = () => {
   return (
     <div>
       <div

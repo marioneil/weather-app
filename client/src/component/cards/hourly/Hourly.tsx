@@ -1,11 +1,35 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { WeatherContext } from "../../../context/WeatherContext";
-import { Header } from "./Header";
-import { Details } from "./Details";
+
+import axios from "axios";
+import { HourlyAccordions } from "./accordion/HourlyAccordions";
 
 export const Hourly = () => {
+  const [responsedata, setResponseData] = useState();
   const { selectedAddress, currentWeather } = useContext(WeatherContext);
 
+  async function getHourlyWeather() {
+    const url = `http://localhost:3000/hourly?q=${selectedAddress.lat},${selectedAddress.lon}`;
+    try {
+      const response = await axios.get(url);
+      setResponseData(response.data);
+      console.log(
+        "forecastDay - " + response.data.forecast.forecastday[0].hour[0].time
+      );
+      //  const addresses = response.data;
+      //   setCurrentWeather(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    console.log("in use effect");
+    getHourlyWeather();
+    console.log(`response ${responsedata}`);
+  }, []);
+
+  if (!responsedata) return <>Loading</>;
   return (
     <>
       <div data-testid="today-card" className="p-3 bg-primary-subtle">
@@ -13,109 +37,16 @@ export const Hourly = () => {
           <div className="card-header  bg-primary text-white">
             <p className="m-0">
               <span className="h5">
-                {"HOURLY "}
-                {`${selectedAddress.name},  ${selectedAddress.region}, ${selectedAddress.country} `}
+                {"Hourly Weather - "}
+                {`${selectedAddress.name},  ${selectedAddress.region}`}
               </span>
-              <span> As of 9:12 am EST</span>
+              <p className="m-0"> As of 9:12 am EST</p>
             </p>
           </div>
           <div className="card-body bg-info-subtle">
+            <h6>Saturday, March 30 </h6>
             <div className="accordion" id="accordionExample">
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
-                  >
-                    {/* Accordion Item #1 */}
-                    <Header />
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div className="accordion-body">
-                    {/* <strong>This is the first item's accordion body.</strong> It
-                    is shown by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow. */}
-                    <Details />
-                  </div>
-                </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
-                    Accordion Item #2
-                  </button>
-                </h2>
-                <div
-                  id="collapseTwo"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div className="accordion-body">
-                    <strong>This is the second item's accordion body.</strong>{" "}
-                    It is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </div>
-                </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
-                    Accordion Item #3
-                  </button>
-                </h2>
-                <div
-                  id="collapseThree"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div className="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It
-                    is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </div>
-                </div>
-              </div>
+              <HourlyAccordions data={responsedata} />
             </div>
           </div>
         </div>
