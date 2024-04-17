@@ -1,50 +1,47 @@
 import React from "react";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionDetails } from "./AccordionDetails";
+import { Forecastday } from "../../../../types/hourly";
 
-// const EditBio: FC = (props): JSX.Element => {
-//   <>
-//     {props.bio}
-//     <br />
-//     {props.open}
-//   </>
-// };
+export const HourlyAccordions: React.FC<{ forecastday: Forecastday }> = (
+  props
+) => {
+  const d = new Date();
 
-interface HourlyProps {
-  data: any;
-}
-
-export const HourlyAccordions: React.FC<HourlyProps> = (props) => {
-  console.log("hourlyAccordions- " + props.data);
   return (
     <>
-      <div>before</div>
-      {JSON.stringify(props.data.forecast.forecastday[0].hour[0].time)}
-      <div>after</div>
-      <div className="accordion-item">
-        <h2 className="accordion-header">
-          <button
-            className="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            {/* Accordion Item #1 */}
-            <AccordionHeader />
-          </button>
-        </h2>
-        <div
-          id="collapseOne"
-          className="accordion-collapse collapse show"
-          data-bs-parent="#accordionExample"
-        >
-          <div className="accordion-body">
-            <AccordionDetails />
-          </div>
-        </div>
-      </div>
+      {props.forecastday.hour.map((hour, index) => {
+        const current = new Date(hour.time);
+        // console.log(current, " -  ", hour.time);
+        if (current > d)
+          return (
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  className="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#hour_${hour.time_epoch}`}
+                  aria-expanded="true"
+                  aria-controls={`hour_${hour.time_epoch}`}
+                >
+                  <AccordionHeader hour={hour} />
+                </button>
+              </h2>
+              <div
+                id={`hour_${hour.time_epoch}`}
+                className={`accordion-collapse collapse ${
+                  index === 0 ? "show" : ""
+                }`}
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <AccordionDetails hour={hour} />
+                </div>
+              </div>
+            </div>
+          );
+      })}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
-import { CurrentWeather } from "../types";
+import { CurrentWeather } from "../types/current";
 import axios from "axios";
 
 export const WeatherContext = createContext<{

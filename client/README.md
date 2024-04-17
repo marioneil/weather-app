@@ -62,10 +62,29 @@ mAR 30
 DONE Acordion header has time hour - temperateure
 DONE Add dates section in hourly card
 
+Apr 2
 DONE get hourly forecast from server.
-implement axios call on server.
+DONE implement axios call on server.
+server call
+http://localhost:3000/hourly?q=m1s1s4
 
-DYNAMIC hourly screen
+Apr 6
+DONE Create Types for server response.
+DONE DYNAMIC hourly screen
+
+Apr 13 - Sat
+start from current hour of current days
+Align hourly screen
+accordoion body
+
+Bugs
+
+Next day accordion is open by default
+Date on top of screen is prev day
+revist hourly Accordions Copy. map function.
+remove console errors.
+
+> > > > > > > > > > > > > unit tests
 
 unit test for hourly component
 cypress test for hourly component.
