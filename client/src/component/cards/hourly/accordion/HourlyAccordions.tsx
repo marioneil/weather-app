@@ -11,8 +11,14 @@ export const HourlyAccordions: React.FC<{ forecastday: Forecastday }> = (
   return (
     <>
       {props.forecastday.hour.map((hour, index) => {
-        const current = new Date(hour.time);
-        // console.log(current, " -  ", hour.time);
+        const timestamp = hour.time + ":00";
+        console.log("timestamp - " + timestamp);
+        const current = new Date(Date.parse(timestamp));
+
+        console.log(`current ${current}`);
+        const expandAccordion =
+          new Date().getDate() === new Date(hour.time.split(" ")[0]).getDate();
+
         if (current > d)
           return (
             <div className="accordion-item">
@@ -31,7 +37,7 @@ export const HourlyAccordions: React.FC<{ forecastday: Forecastday }> = (
               <div
                 id={`hour_${hour.time_epoch}`}
                 className={`accordion-collapse collapse ${
-                  index === 0 ? "show" : ""
+                  index === 0 && expandAccordion ? "show" : ""
                 }`}
                 data-bs-parent="#accordionExample"
               >

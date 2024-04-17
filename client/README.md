@@ -78,6 +78,8 @@ Align hourly screen
 accordoion body
 
 Bugs
+open hourly accordion
+for day 1 and 1st hour
 
 Next day accordion is open by default
 Date on top of screen is prev day

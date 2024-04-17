@@ -47,7 +47,11 @@ export const Hourly = () => {
           </div>
           {hourlyWeather.forecast.forecastday.map((forecastday) => (
             <div className="card-body bg-info-subtle">
-              <h6>{formatter.format(new Date(forecastday.date))} </h6>
+              <h6>
+                {formatter.format(
+                  new Date(Date.parse(forecastday.date + " 00:00:00"))
+                )}{" "}
+              </h6>
               <div className="accordion" id="accordionExample">
                 <HourlyAccordions forecastday={forecastday} />
               </div>
