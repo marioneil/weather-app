@@ -78,11 +78,16 @@ Align hourly screen
 accordoion body
 
 Bugs
+Done
 open hourly accordion
 for day 1 and 1st hour
 
 Next day accordion is open by default
 Date on top of screen is prev day
+
+---
+
+Sat 20th 9 am
 revist hourly Accordions Copy. map function.
 remove console errors.
 
