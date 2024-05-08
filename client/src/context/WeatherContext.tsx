@@ -33,7 +33,6 @@ export const WeatherProvider: React.FC<PropsWithChildren> = ({ children }) => {
     const url = `http://localhost:3000/current?q=${selectedAddress.lat},${selectedAddress.lon}`;
     try {
       const response = await axios.get(url);
-      console.log(response.data);
       //  const addresses = response.data;
       setCurrentWeather(response.data);
     } catch (error) {

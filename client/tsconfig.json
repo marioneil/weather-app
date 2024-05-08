@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "types": [
+      "node",
       "cypress",
       "./cypress/support/index.d.ts",
       "@testing-library/cypress"

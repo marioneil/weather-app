@@ -7,7 +7,7 @@ import { HourlyWeather } from "../../../types/hourly";
 
 export const Hourly = () => {
   const [hourlyWeather, setHourlyWeather] = useState<HourlyWeather>();
-  const { selectedAddress, currentWeather } = useContext(WeatherContext);
+  const { selectedAddress } = useContext(WeatherContext);
 
   async function getHourlyWeather() {
     const url = `http://localhost:3000/hourly?q=${selectedAddress.lat},${selectedAddress.lon}`;
@@ -20,7 +20,6 @@ export const Hourly = () => {
   }
 
   useEffect(() => {
-    console.log("in use effect");
     getHourlyWeather();
   }, []);
 
@@ -42,11 +41,14 @@ export const Hourly = () => {
                 {"Hourly Weather - "}
                 {`${selectedAddress.name},  ${selectedAddress.region}`}
               </span>
-              <p className="m-0"> As of 9:12 am EST</p>
+              <span className="m-0"> As of 9:12 am EST</span>
             </p>
           </div>
           {hourlyWeather.forecast.forecastday.map((forecastday) => (
-            <div className="card-body bg-info-subtle">
+            <div
+              key={forecastday.date_epoch}
+              className="card-body bg-info-subtle"
+            >
               <h6>
                 {formatter.format(
                   new Date(Date.parse(forecastday.date + " 00:00:00"))

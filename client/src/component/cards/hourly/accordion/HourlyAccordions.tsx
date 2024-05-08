@@ -6,22 +6,19 @@ import { Forecastday } from "../../../../types/hourly";
 export const HourlyAccordions: React.FC<{ forecastday: Forecastday }> = (
   props
 ) => {
-  const d = new Date();
-
   return (
     <>
       {props.forecastday.hour.map((hour, index) => {
         const timestamp = hour.time + ":00";
-        console.log("timestamp - " + timestamp);
         const current = new Date(Date.parse(timestamp));
-
-        console.log(`current ${current}`);
         const expandAccordion =
-          new Date().getDate() === new Date(hour.time.split(" ")[0]).getDate();
+          new Date().getDate() === new Date(hour.time.split(" ")[0]);
 
+        console.log(expandAccordion);
+        const d = new Date();
         if (current > d)
           return (
-            <div className="accordion-item">
+            <div key={hour.time_epoch} className="accordion-item">
               <h2 className="accordion-header">
                 <button
                   className="accordion-button"

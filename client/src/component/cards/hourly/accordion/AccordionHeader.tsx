@@ -1,4 +1,3 @@
-import { BsFillCloudSunFill } from "react-icons/bs";
 import { BsDroplet } from "react-icons/bs";
 import { BsWind } from "react-icons/bs";
 import { Hour } from "../../../../types/hourly";

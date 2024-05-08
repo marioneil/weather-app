@@ -4,7 +4,6 @@ import {
   BsDropletHalf,
   BsFillCloudSleetFill,
   BsFillSunFill,
-  BsThermometer,
   BsThermometerHalf,
   BsWind,
 } from "react-icons/bs";

@@ -88,10 +88,25 @@ Date on top of screen is prev day
 ---
 
 Sat 20th 9 am
-revist hourly Accordions Copy. map function.
-remove console errors.
+done revist hourly Accordions Copy. map function.
+done remove console errors.
 
 > > > > > > > > > > > > > unit tests
 
+apr 30
+snapshot test
+done - App.txt
+done inline snapshot
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
+HourlyAccordions not working.
+const expandAccordion =
+new Date().getDate() === new Date(hour.time.split(" ")[0]);
+
 unit test for hourly component
+back end and front end tests.
+
 cypress test for hourly component.
+test accordions are working ,
+only one accordion should be open.
+other one should close / toggle.

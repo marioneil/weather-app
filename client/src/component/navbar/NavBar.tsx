@@ -39,7 +39,7 @@ export const NavBar = () => {
       <nav className="navbar bg-primary" data-bs-theme="dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#" data-testid="Navbar.Header">
-            The Weather Channel
+            The Weather Channel1
           </a>
           <form className="d-flex" role="search">
             <div className="position-relative ">
