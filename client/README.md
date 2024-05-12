@@ -98,10 +98,21 @@ snapshot test
 done - App.txt
 done inline snapshot
 
+done
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
 HourlyAccordions not working.
 const expandAccordion =
 new Date().getDate() === new Date(hour.time.split(" ")[0]);
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+
+May 12 - to do
+first accordion is open for all days,
+it should only open for day 1
+
+memoize the state value of isFirst , so that infinite rerender is avoided.
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
 unit test for hourly component
 back end and front end tests.

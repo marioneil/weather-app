@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionDetails } from "./AccordionDetails";
 import { Forecastday } from "../../../../types/hourly";
@@ -6,18 +6,31 @@ import { Forecastday } from "../../../../types/hourly";
 export const HourlyAccordions: React.FC<{ forecastday: Forecastday }> = (
   props
 ) => {
+  //let isFirst = true;
+
+  const [isFirst, setIsFirst] = useState(true);
+
+  const flip = useCallback(() => {
+    setIsFirst(false);
+  }, []);
+
   return (
     <>
       {props.forecastday.hour.map((hour, index) => {
         const timestamp = hour.time + ":00";
         const current = new Date(Date.parse(timestamp));
-        const expandAccordion =
-          new Date().getDate() === new Date(hour.time.split(" ")[0]).getDate();
 
-        console.log(expandAccordion);
         const d = new Date();
-        const isFirstAccordion = index === 0 && expandAccordion;
+        // const isFirstAccordion = index === 0 && expandAccordion;
+
         if (current > d) {
+          const isFirstAccordion = isFirst;
+          //isFirst = false;
+          //setIsFirst(false);
+          flip();
+          console.log(
+            `isFirstAccordion - ${isFirstAccordion} ; isFirst- ${isFirst}`
+          );
           return (
             <div key={hour.time_epoch} className="accordion-item">
               <h2 className="accordion-header">
