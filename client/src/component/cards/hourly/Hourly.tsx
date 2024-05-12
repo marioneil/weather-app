@@ -54,7 +54,10 @@ export const Hourly = () => {
                   new Date(Date.parse(forecastday.date + " 00:00:00"))
                 )}{" "}
               </h6>
-              <div className="accordion" id="accordionExample">
+              <div
+                className="accordion"
+                id={"accordion_" + forecastday.date_epoch}
+              >
                 <HourlyAccordions forecastday={forecastday} />
               </div>
             </div>
