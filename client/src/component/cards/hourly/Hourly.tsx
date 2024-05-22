@@ -44,7 +44,7 @@ export const Hourly = () => {
               <span className="m-0"> As of 9:12 am EST</span>
             </p>
           </div>
-          {hourlyWeather.forecast.forecastday.map((forecastday) => (
+          {hourlyWeather.forecast.forecastday.map((forecastday, index) => (
             <div
               key={forecastday.date_epoch}
               className="card-body bg-info-subtle"
@@ -58,7 +58,11 @@ export const Hourly = () => {
                 className="accordion"
                 id={"accordion_" + forecastday.date_epoch}
               >
-                <HourlyAccordions forecastday={forecastday} />
+                <HourlyAccordions
+                  forecastday={forecastday}
+                  isFirstDay={index === 0}
+                  localTimeEpoch={hourlyWeather.location.localtime_epoch}
+                />
               </div>
             </div>
           ))}

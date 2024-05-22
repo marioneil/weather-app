@@ -107,10 +107,17 @@ new Date().getDate() === new Date(hour.time.split(" ")[0]);
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
 May 12 - to do
-first accordion is open for all days,
-it should only open for day 1
+DONE first accordion is open for all days,
+DONE Sit should only open for day 1
 
-memoize the state value of isFirst , so that infinite rerender is avoided.
+NOT NEEDED -> memoize the state value of isFirst , so that infinite rerender is avoided.
+
+mAY 21 -
+
+fix the Clear Search bar bug
+redirct to today when loading home page.
+
+monthly screen
 
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
