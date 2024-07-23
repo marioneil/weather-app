@@ -114,7 +114,8 @@ NOT NEEDED -> memoize the state value of isFirst , so that infinite rerender is 
 
 mAY 21 -
 
-fix the Clear Search bar bug
+fix the Clear Search bar bug, remove the search term once it is completed.
+
 redirct to today when loading home page.
 
 monthly screen
@@ -128,3 +129,8 @@ cypress test for hourly component.
 test accordions are working ,
 only one accordion should be open.
 other one should close / toggle.
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > .
+
+July 15
+Generate for the selected month and year in dropdown.

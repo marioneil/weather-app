@@ -3,6 +3,7 @@ import axios from "axios";
 import { router as searchRouter } from "./search";
 import { router as currentRouter } from "./current";
 import { router as hourlyRouter } from "./hourly";
+import { router as monthlyRouter } from "./monthly";
 
 import cors from "cors";
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded());
 app.use("/search", searchRouter);
 app.use("/current", currentRouter);
 app.use("/hourly", hourlyRouter);
+app.use("/monthly", monthlyRouter);
 
 // Home page route.
 app.get("/", function (req, res) {

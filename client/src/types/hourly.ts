@@ -3,7 +3,7 @@ export interface HourlyWeather {
   current: Current;
   forecast: Forecast;
 }
-interface Forecast {
+export interface Forecast {
   forecastday: Forecastday[];
 }
 export interface Forecastday {

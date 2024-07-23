@@ -24,9 +24,9 @@ const NavBar3 = () => {
           </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">
+          <Link className="nav-link" to="/monthly">
             Monthly
-          </a>
+          </Link>
         </li>
       </ul>
     </>
