@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { WeatherContext } from "../../../../../context/WeatherContext";
 
 export const Years = () => {
-  const [year, setYear] = useState<string | null>(
-    new Date().getFullYear().toString()
-  );
+  const { selectedYear, setSelectedYear } = useContext(WeatherContext);
+
+  // const [year, setYear] = useState<string | null>(
+  //   new Date().getFullYear().toString()
+  // );
 
   const years = ["2024", "2025", "2026", "2027"];
 
@@ -15,12 +18,12 @@ export const Years = () => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        {year ? year : "Dropdown button"}
+        {selectedYear ? selectedYear : "Dropdown button"}
       </button>
       <ul className="dropdown-menu">
         {years.map((item) => (
           <li key={item}>
-            <p className="dropdown-item" onClick={() => setYear(item)}>
+            <p className="dropdown-item" onClick={() => setSelectedYear(item)}>
               {item}
             </p>
           </li>

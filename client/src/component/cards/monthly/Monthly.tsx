@@ -14,6 +14,8 @@ export const Monthly = () => {
   const [monthlyWeather, setMonthlyWeather] = useState<HourlyWeather>();
   const { selectedAddress } = useContext(WeatherContext);
 
+  const { selectedMonth, selectedYear } = useContext(WeatherContext);
+
   async function getMonthlyWeather() {
     const url = `http://localhost:3000/monthly?q=${selectedAddress.lat},${selectedAddress.lon}`;
     try {
@@ -27,14 +29,6 @@ export const Monthly = () => {
   useEffect(() => {
     getMonthlyWeather();
   }, []);
-
-  //  if (!hourlyWeather) return <>Loading</>;
-
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
-  });
 
   return (
     <>
@@ -77,7 +71,7 @@ export const Monthly = () => {
               </thead>
 
               <tbody>
-                {monthlyArr().map((week, index) => {
+                {monthlyArr(selectedMonth, selectedYear).map((week, index) => {
                   return (
                     <tr key={index}>
                       {week.map((fcastDay, index1) => {

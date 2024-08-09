@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Years } from "../cards/monthly/components/dropdowns/Years";
 import { Months } from "../cards/monthly/components/dropdowns/Months";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import ThemeSwitcher from "../cards/monthly/components/dropdowns/ThemeSwitcher";
-import { useState } from "react";
+import { useContext } from "react";
+import { WeatherContext } from "../../context/WeatherContext";
 
 const NavBar4 = () => {
   var months = [
@@ -21,7 +21,7 @@ const NavBar4 = () => {
     "Dec",
   ];
 
-  var [currMonth, setCurrMonth] = useState<number>(new Date().getMonth());
+  const { selectedMonth, setSelectedMonth } = useContext(WeatherContext);
 
   return (
     <>
@@ -31,20 +31,20 @@ const NavBar4 = () => {
             className="nav-link"
             to=""
             onClick={() => {
-              setCurrMonth((prevCurrMonth) => {
-                if (prevCurrMonth === 1) return 1;
-                else return prevCurrMonth - 1;
+              setSelectedMonth((prevSelectedMonth: number) => {
+                if (prevSelectedMonth === 1) return 1;
+                else return prevSelectedMonth - 1;
               });
             }}
           >
-            <BsArrowLeft /> {months[currMonth - 1]}
+            <BsArrowLeft /> {months[selectedMonth - 1]}
           </Link>
         </li>
         <span className="m-0 d-flex  justify-content-center">
           <li className="nav-item">
             <Months
-              currentMonth={currMonth}
-              setCurrentMonth={setCurrMonth}
+              currentMonth={selectedMonth}
+              setCurrentMonth={setSelectedMonth}
             ></Months>
           </li>
           <li className="nav-item">
@@ -57,13 +57,13 @@ const NavBar4 = () => {
             className="nav-link"
             to=""
             onClick={() => {
-              setCurrMonth((prevCurrMonth) => {
-                if (prevCurrMonth === 11) return 11;
-                return prevCurrMonth + 1;
+              setSelectedMonth((prevSelectedMonth: number) => {
+                if (prevSelectedMonth === 11) return 11;
+                return prevSelectedMonth + 1;
               });
             }}
           >
-            {months[currMonth + 1]} <BsArrowRight />
+            {months[selectedMonth + 1]} <BsArrowRight />
           </Link>
         </li>
       </ul>

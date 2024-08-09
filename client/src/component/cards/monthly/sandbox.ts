@@ -2,9 +2,9 @@
 
 //import { result } from "./result";
 
-import { Forecastday } from "../../../types/hourly";
-import { data } from "./result";
-let result = data.result; // val is "Hello"
+//import { data } from "./result";
+import { forecastDays } from "./result1";
+// let result = data.result; // val is "Hello"
 
 //function getWeekOfMonth(date) {
 //const newDateObj = convertDate(date);
@@ -36,9 +36,11 @@ function convertDate(date: string) {
   return mydate;
 }
 
-export function monthlyArr() {
-  const my2DArray: (Omit<Forecastday, "hour"> | null)[][] = [];
-  const rows = 5;
+export function monthlyArr(month: number, year: number) {
+  //s console.log(`monthlyArr(,,,) ${month} - ${year}`);
+  //const my2DArray: (Omit<Forecastday, "hour" | "date_epoch"> | null)[][] = [];
+  const my2DArray: any[][] = [];
+  const rows = 6;
   // const columns = 7;
 
   for (let i = 0; i < rows; i++) {
@@ -47,14 +49,23 @@ export function monthlyArr() {
 
   //  console.log(result.forecast.forecastday[0].date);
 
+  let result = {
+    forecast: {
+      forecastday: forecastDays(year, month),
+    },
+  };
   let weekNumber = 0;
   for (let i = 0; i < result.forecast.forecastday.length; i++) {
     const d = result.forecast.forecastday[i].date;
     let dayNumber = getDayOfWeek(d);
     // let weekNumber = getWeekOfMonth(d);
 
-    //   console.log(weekNumber);
+    // console.log(`${weekNumber} - ${weekNumber}`);
     //    console.log(dayNumber);
+
+    if (weekNumber === 5) {
+      console.log("eror about to happne");
+    }
 
     my2DArray[weekNumber][dayNumber] = result.forecast.forecastday[i];
     if (dayNumber == 6) {

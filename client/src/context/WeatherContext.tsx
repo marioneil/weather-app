@@ -6,12 +6,24 @@ export const WeatherContext = createContext<{
   selectedAddress: any;
   setSelectedAddress: (currentAddress: any) => void;
   currentWeather: null | CurrentWeather;
+  selectedMonth: number;
+  setSelectedMonth: (currentYear: any) => void;
+  selectedYear: number;
+  setSelectedYear: (currentYear: any) => void;
 }>({
   selectedAddress: null,
   setSelectedAddress: () => {
     console.log("function not defined.");
   },
   currentWeather: null,
+  selectedMonth: new Date().getMonth(),
+  setSelectedMonth: () => {
+    console.log("function not defined.");
+  },
+  selectedYear: new Date().getFullYear(),
+  setSelectedYear: () => {
+    console.log("function not defined.");
+  },
 });
 
 export const WeatherProvider: React.FC<PropsWithChildren> = ({ children }) => {
@@ -44,9 +56,24 @@ export const WeatherProvider: React.FC<PropsWithChildren> = ({ children }) => {
     getCurrentWeather();
   }, [selectedAddress]);
 
+  const [selectedMonth, setSelectedMonth] = useState<number>(
+    new Date().getMonth()
+  );
+  const [selectedYear, setSelectedYear] = useState<number>(
+    new Date().getFullYear()
+  );
+
   return (
     <WeatherContext.Provider
-      value={{ selectedAddress, setSelectedAddress, currentWeather }}
+      value={{
+        selectedAddress,
+        setSelectedAddress,
+        currentWeather,
+        selectedMonth,
+        setSelectedMonth,
+        selectedYear,
+        setSelectedYear,
+      }}
     >
       {children}
     </WeatherContext.Provider>

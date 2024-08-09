@@ -21,10 +21,10 @@ export const Months = ({ currentMonth, setCurrentMonth }: Params) => {
     "Dec",
   ];
   // var [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
-  console.log(currentMonth);
+
   useEffect(() => {
     // setSelectedMonth(currentMonth);
-    console.log(currentMonth);
+    ///   console.log(currentMonth);
   }, [currentMonth]);
 
   return (
