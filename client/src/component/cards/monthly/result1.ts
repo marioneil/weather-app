@@ -31,43 +31,44 @@ function createRandomForecastDay(year: number, month: number, day: number) {
   const min_temp = generateRandomMinTemp();
 
   return {
+    hour: [],
     date: `${year}-${zeroPad(month + 1, 2)}-${zeroPad(day + 1, 2)}`,
-    // date_epoch: 1719964800,
+    date_epoch: 1719964800,
     day: {
       maxtemp_c: max_temp,
-      //   maxtemp_f: 80.9,
+      maxtemp_f: 80.9,
       mintemp_c: min_temp,
-      //   mintemp_f: 68.9,
+      mintemp_f: 68.9,
       avgtemp_c: Number(max_temp + min_temp) / 2,
-      //   avgtemp_f: 74.8,
-      //   maxwind_mph: 15.4,
-      //   maxwind_kph: 24.8,
-      //   totalprecip_mm: 0,
-      //   totalprecip_in: 0,
-      //   totalsnow_cm: 0,
-      //   avgvis_km: 10,
-      //   avgvis_miles: 6,
-      //   avghumidity: 53,
-      //   daily_will_it_rain: 0,
-      //   daily_chance_of_rain: 0,
-      //   daily_will_it_snow: 0,
-      //   daily_chance_of_snow: 0,
+      avgtemp_f: 74.8,
+      maxwind_mph: 15.4,
+      maxwind_kph: 24.8,
+      totalprecip_mm: 0,
+      totalprecip_in: 0,
+      totalsnow_cm: 0,
+      avgvis_km: 10,
+      avgvis_miles: 6,
+      avghumidity: 53,
+      daily_will_it_rain: 0,
+      daily_chance_of_rain: 0,
+      daily_will_it_snow: 0,
+      daily_chance_of_snow: 0,
       condition: {
         text: generateRandomCondition().text,
         icon: generateRandomCondition().icon,
         code: generateRandomCondition().code,
       },
-      //   uv: 10,
+      uv: 10,
     },
     astro: {
-      //   sunrise: "05:30 AM",
-      //   sunset: "08:30 PM",
-      //   moonrise: "02:55 AM",
-      //   moonset: "06:56 PM",
+      sunrise: "05:30 AM",
+      sunset: "08:30 PM",
+      moonrise: "02:55 AM",
+      moonset: "06:56 PM",
       moon_phase: "Waning Crescent",
-      //   moon_illumination: 10,
-      //   is_moon_up: 0,
-      //   is_sun_up: 1,
+      moon_illumination: 10,
+      is_moon_up: 0,
+      is_sun_up: 1,
     },
   };
 }
@@ -75,13 +76,13 @@ function createRandomForecastDay(year: number, month: number, day: number) {
 function generateRandomMaxTemp() {
   const max = 33;
   const min = 27;
-  return (Math.random() * (max - min) + min).toFixed(2);
+  return Math.random() * (max - min) + min;
 }
 
 function generateRandomMinTemp() {
   const max = 15;
   const min = 11;
-  return (Math.random() * (max - min) + min).toFixed(2);
+  return Math.random() * (max - min) + min;
 }
 
 function generateRandomCondition() {

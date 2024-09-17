@@ -9,26 +9,30 @@ import { monthlyArr } from "./sandbox";
 import { Months } from "./components/dropdowns/Months";
 import { Years } from "./components/dropdowns/Years";
 import NavBar4 from "../../navbar/NavBar4";
+import { MonthlyDay } from "./MonthlyDay";
 
 export const Monthly = () => {
-  const [monthlyWeather, setMonthlyWeather] = useState<HourlyWeather>();
+  const [monthlyWeather, setMonthlyWeather] =
+    useState<(Forecastday | null)[][]>();
   const { selectedAddress } = useContext(WeatherContext);
 
   const { selectedMonth, selectedYear } = useContext(WeatherContext);
 
-  async function getMonthlyWeather() {
-    const url = `http://localhost:3000/monthly?q=${selectedAddress.lat},${selectedAddress.lon}`;
-    try {
-      const response = await axios.get(url);
-      setMonthlyWeather(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function getMonthlyWeather() {
+  //   const url = `http://localhost:3000/monthly?q=${selectedAddress.lat},${selectedAddress.lon}`;
+  //   try {
+  //     const response = await axios.get(url);
+  //     setMonthlyWeather(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   useEffect(() => {
-    getMonthlyWeather();
+    setMonthlyWeather(monthlyArr(selectedMonth, selectedYear));
   }, []);
+
+  const [selectedWeek, setSelectedWeek] = useState(-1);
 
   return (
     <>
@@ -71,33 +75,48 @@ export const Monthly = () => {
               </thead>
 
               <tbody>
-                {monthlyArr(selectedMonth, selectedYear).map((week, index) => {
+                {monthlyWeather?.map((week, index) => {
+                  console.log(week);
+                  // const [showDay, setShowDay] = useState(false);
+                  if (week.every((day) => day === null)) return null;
                   return (
-                    <tr key={index}>
-                      {week.map((fcastDay, index1) => {
-                        return fcastDay ? (
-                          <td key={fcastDay.date} className="text-primary">
-                            <p>{Number(fcastDay?.date?.substring(8))}</p>
-                            <p>
-                              {/* <BsFillSunFill size={16} /> */}
-                              <img src={fcastDay?.day?.condition.icon}></img>
-                            </p>
-                            {/* <p> */}
-                            <p className="m-0">
-                              {fcastDay?.day?.maxtemp_c} &#176;C
-                            </p>
-                            {/* </p> */}
-                            {/* <p> */}
-                            <p className="m-0">
-                              {fcastDay?.day?.mintemp_c} &#176;C
-                            </p>
-                            {/* </p> */}
-                          </td>
-                        ) : (
-                          <td key={index + index1}></td>
-                        );
-                      })}
-                    </tr>
+                    <>
+                      <tr key={index}>
+                        {week.map((fcastDay, index1) => {
+                          return fcastDay ? (
+                            <td
+                              key={fcastDay.date}
+                              className="text-primary"
+                              onClick={() => {
+                                // closeAll
+                                setSelectedWeek(index);
+                              }}
+                            >
+                              <p>{Number(fcastDay?.date?.substring(8))}</p>
+                              <p>
+                                <img src={fcastDay?.day?.condition.icon}></img>
+                              </p>
+                              <p className="m-0">
+                                {fcastDay?.day?.maxtemp_c.toFixed(2)} &#176;C
+                              </p>
+                              <p className="m-0">
+                                {fcastDay?.day?.mintemp_c.toFixed(2)} &#176;C
+                              </p>
+                            </td>
+                          ) : (
+                            <td key={index + index1}></td>
+                          );
+                        })}
+                      </tr>
+                      <tr
+                        className={` ${selectedWeek === index ? "" : "d-none"}`}
+                      >
+                        <MonthlyDay
+                          index={index}
+                          setSelectedWeek={setSelectedWeek}
+                        ></MonthlyDay>
+                      </tr>
+                    </>
                   );
                 })}
               </tbody>

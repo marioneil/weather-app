@@ -3,6 +3,7 @@
 //import { result } from "./result";
 
 //import { data } from "./result";
+import { Forecastday } from "../../../types/hourly";
 import { forecastDays } from "./result1";
 // let result = data.result; // val is "Hello"
 
@@ -39,7 +40,7 @@ function convertDate(date: string) {
 export function monthlyArr(month: number, year: number) {
   //s console.log(`monthlyArr(,,,) ${month} - ${year}`);
   //const my2DArray: (Omit<Forecastday, "hour" | "date_epoch"> | null)[][] = [];
-  const my2DArray: any[][] = [];
+  const my2DArray: (Forecastday | null)[][] = [];
   const rows = 6;
   // const columns = 7;
 

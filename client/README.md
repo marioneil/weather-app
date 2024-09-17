@@ -127,10 +127,20 @@ back end and front end tests.
 
 cypress test for hourly component.
 test accordions are working ,
-only one accordion should be open.
+Done - > only one accordion should be open.
 other one should close / toggle.
 
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > .
 
 July 15
-Generate for the selected month and year in dropdown.
+DONE Generate for the selected month and year in dropdown.
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > >
+
+August 8
+Add details to each day card when click on td of the monthly calendar.
+Alighn all cells to left.
+
+DONE All Days weather changes when i click on each cell on monthly page.
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
