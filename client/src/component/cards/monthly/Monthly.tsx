@@ -18,21 +18,12 @@ export const Monthly = () => {
 
   const { selectedMonth, selectedYear } = useContext(WeatherContext);
 
-  // async function getMonthlyWeather() {
-  //   const url = `http://localhost:3000/monthly?q=${selectedAddress.lat},${selectedAddress.lon}`;
-  //   try {
-  //     const response = await axios.get(url);
-  //     setMonthlyWeather(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   useEffect(() => {
     setMonthlyWeather(monthlyArr(selectedMonth, selectedYear));
   }, []);
 
   const [selectedWeek, setSelectedWeek] = useState(-1);
+  const [selectedDay, setSelectedDay] = useState(-1);
 
   return (
     <>
@@ -89,7 +80,9 @@ export const Monthly = () => {
                               className="text-primary"
                               onClick={() => {
                                 // closeAll
+                                setSelectedWeek(-1);
                                 setSelectedWeek(index);
+                                setSelectedDay(index1);
                               }}
                             >
                               <p>{Number(fcastDay?.date?.substring(8))}</p>
@@ -114,6 +107,7 @@ export const Monthly = () => {
                         <MonthlyDay
                           index={index}
                           setSelectedWeek={setSelectedWeek}
+                          forecastDay={week[selectedDay]}
                         ></MonthlyDay>
                       </tr>
                     </>
